@@ -1,3 +1,4 @@
+import { useFormInput } from './components/useFormInput';
 import { useOnlineStatus } from './components/useOnlineStatus';
 
 function StatusBar() {
@@ -19,9 +20,29 @@ function SaveButton(){
   );
 }
 
+function Form(){
+  const firstNameProps = useFormInput('Rany');
+  const lastNameProps = useFormInput('Virakvuth');
+
+  return (
+    <>
+      <label>
+        First Name:
+        <input {...firstNameProps}/>
+      </label>
+      <label>
+        Last Name:
+        <input {...lastNameProps}/>
+      </label>
+      <p><b>Good Night, {firstNameProps.value} {lastNameProps.value}.</b></p>
+    </>
+  );
+}
+
 export default function App(){
   return (
     <>
+      <Form />
       <StatusBar/>
       <SaveButton />
     </>
